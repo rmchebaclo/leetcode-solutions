@@ -1,6 +1,6 @@
 from tree_node import TreeNode
 class Solution:
-    # same complexity for all traversals 
+    # same complexity for all dfs traversals 
     # time complexity: 0(n)
     # space complexity: O(h), h = logn in balanced tree, h = n in worst case
     def inorderTraversal(self, root: TreeNode) -> list[int]:
