@@ -32,17 +32,3 @@ class Solution:
                 if curr.right:
                     queue.append(curr.right)
         return root
-    
-    # iterative dfs
-    # time complexity: O(n)
-    # space complexity: O(h), h = logn in balanced tree, h = n in worst case
-    def maxDepth(self, root: TreeNode) -> int:
-        stack = [(root,1)]
-        res = 0
-        while stack:
-            node, depth = stack.pop()
-            if node:
-                res = max(res, depth)
-                stack.append((node.right, depth + 1))
-                stack.append((node.left, depth + 1))
-        return res
