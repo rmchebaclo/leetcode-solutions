@@ -13,7 +13,7 @@ class Solution:
         self.invertTree(root.left)
         self.invertTree(root.right)
         return root
-    
+        
     # iterative bfs
     # time complexity: O(n)
     # space complexity: O(w), width of the tree worse case w = n
