@@ -15,3 +15,15 @@ class Solution:
             curr += last
             last = tmp
         return curr
+    
+    # top down solution
+    # use memoization to store previously calculated values and avoid redundancy
+    # time complexity: O(n)
+    # space complexity: O(n)
+    def fib(self, n: int) -> int:
+        def dp(n, cache):
+            if n in cache:
+                return cache[n]
+            cache[n] = dp(n-2, cache) + dp(n-1, cache)
+            return cache[n]
+        return dp(n, {0: 0, 1: 1})
