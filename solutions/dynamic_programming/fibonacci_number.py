@@ -1,4 +1,15 @@
 class Solution:
+    # recurisve solution
+    # top down without memoization
+    # break down problem with recursive step until we get to n = 0 or 1 because we know the value of those
+    # fill values back to the top of the tree until we reach a solution for n
+    # inefficient because we have to calculate same sequence of values multiple times
+    # time complexity: O(2^n), that is the number of nodes in the solution tree
+    # space complexity: O(n), height of the recursive stack
+    def fib(self, n: int) -> int:
+        if n <= 1:
+            return n
+        return self.fib(n-1) + self.fib(n-2)
     # bottom up solution
     # we can start from the known numbers in the sequence (0 and 1) and work up from there
     # calculate the next number in the sequence by adding up 2 previous numbers
