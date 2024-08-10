@@ -42,22 +42,26 @@ class Solution:
     # by definiton of a lucky number 11 must be the largest in its column so it must be larger than 15
     # this is a contradiction as 11 can't be greater than and less than 15
     # this contradicition arises for every other number in the matrix if you apply the same logic
+    # similar logic shows why the only possible candidate for a lucky number out of the minimums for each row is the max of those numbers
+    # therefore we don't need extra space and only need to hold the max of the row minimums
+    # and return that max if it also happens to be a column max
     # so 11
     def luckyNumbers (self, matrix: list[list[int]]) -> list[int]:
         rows, cols = len(matrix), len(matrix[0])
-        row_mins = set()
-        
-        # add minimum of each row to a hashset
+        max_of_row_mins = float("-inf")
+
+        # find the maximum from the row minimums
         for r in range(rows):
-            row_mins.add(min(matrix[r]))
-        # get maximum of each column and add it to lucky numbers if it was a row minimum
-        # this works because all values are unique in the input matrix
+            max_of_row_mins = max(max_of_row_mins, min(matrix[r]))
+        # see if that row maximum is also a column minimum
         for c in range(cols):
             max_val = matrix[0][c]
             for r in range(rows):
                 max_val = max(max_val, matrix[r][c])
-            if max_val in row_mins:
+            if max_val == max_of_row_mins:
                 # instantly return if lucky number is found since there can be 1 at most
                 return [max_val]
-        # if no lucky numbers are found
         return []
+        
+
+
