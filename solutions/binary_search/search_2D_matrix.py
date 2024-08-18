@@ -1,7 +1,9 @@
 class Solution:
-    # m (rows) by n (cols) matrix
-    # time complexity: O(log(m*n)) or O(log(m) + log(n))
-    # space complexity: O(1)
+    '''
+    m (rows) by n (cols) matrix
+    time complexity: O(log(m*n)) or O(log(m) + log(n))
+    space complexity: O(1)
+    '''
     def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:
         # run binary search on the rows to find the row which the target is on
         # this is possible because rows are in sorted order as well
