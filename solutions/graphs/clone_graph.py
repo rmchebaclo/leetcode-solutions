@@ -5,7 +5,7 @@ class Node:
         self.val = val
         self.neighbors = neighbors if neighbors is not None else []
 """
-
+# dfs
 from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
@@ -27,3 +27,26 @@ class Solution:
         first = Node(node.val,[])
         dfs(node, first, visited)
         return first
+    
+    # bfs
+    # time: O(n)
+    # space: O(n)
+    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+        if not node:
+            return 
+        start = Node(node.val, [])   
+        visited = {node: start}
+        queue = deque()
+        queue.append(node)
+        while len(queue) > 0:
+            for i in range(len(queue)):
+                curr = queue.popleft()
+                for neighbor in curr.neighbors:
+                    if neighbor in visited:
+                        visited[curr].neighbors.append(visited[neighbor])
+                    else:
+                        clone = Node(neighbor.val, [])
+                        visited[neighbor] = clone
+                        visited[curr].neighbors.append(clone)
+                        queue.append(neighbor)
+        return start
