@@ -1,4 +1,8 @@
 class Solution:
+    # dfs
+    # l = length of the word, m = rows, n = cols
+    # time: O(m * n * 4 ^l)
+    # space: O(l)
     def exist(self, board: list[list[str]], word: str) -> bool:
         rows, cols = len(board), len(board[0])
         def dfs(r, c, i, visited, valid):
